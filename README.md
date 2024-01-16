@@ -52,7 +52,7 @@
 **YouTube Playlist Creator for TV Series**
 
 This project helps you easily create and manage playlists for TV series on YouTube.
-It's designed to be a user-friendly tool for anyone who wants to dithch the frustrating
+It's designed to be a user-friendly tool for anyone who wants to ditch the frustrating
 autoplay shuffle and watch their favorite series in chronological order.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -89,7 +89,7 @@ authenticate your script and access video information.
     ```sh
     git clone https://github.com/aaron-kristopher/youtube-playlist-creator.git
     ```
-3. Install NPM packages
+3. Install pip packages
     ```sh
     pip install google-api-python-client
     ```
