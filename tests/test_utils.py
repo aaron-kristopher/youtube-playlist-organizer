@@ -11,7 +11,7 @@ class TestEpisodeNumberExtraction(unittest.TestCase):
         expected_numbers = [52, 602]
         for title, expected_number in zip(titles, expected_numbers):
             with self.subTest(title=title):
-                self.assertEqual(utils.get_episode_number(title), expected_number)
+                self.assertEqual(get_episode_number(title), expected_number)
 
     def test_episodes_with_total_count(self):
         titles = [
@@ -21,7 +21,7 @@ class TestEpisodeNumberExtraction(unittest.TestCase):
         expected_numbers = [14, 30]
         for title, expected_number in zip(titles, expected_numbers):
             with self.subTest(title=title):
-                self.assertEqual(utils.get_episode_number(title), expected_number)
+                self.assertEqual(get_episode_number(title), expected_number)
 
     def test_titles_without_episode_number(self):
         titles = [
@@ -30,7 +30,7 @@ class TestEpisodeNumberExtraction(unittest.TestCase):
         ]
         for title in titles:
             with self.subTest(title=title):
-                self.assertIsNone(utils.get_episode_number(title))
+                self.assertIsNone(get_episode_number(title))
 
 if __name__ == "__main__":
     unittest.main()
