@@ -104,7 +104,11 @@ authenticate your script and access video information.
 
 ## Usage
 
-This project is still under development.
+Currently, the program sorts an existing playlist in ascending order. This assumes
+that the playlist you provide it is public and has episode numbers. The program 
+creates a new playlist with the videos sorted.
+
+>NOTE: The program is still in development and is not yet finished
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
