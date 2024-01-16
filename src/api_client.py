@@ -8,7 +8,7 @@ def get_youtube_service():
     return youtube
 
 
-def search_videos(youtube, playlist_id, videos):
+def search_videos_from_playlist(youtube, playlist_id, videos):
 
     nextPageToken = None
 
@@ -45,6 +45,7 @@ def search_videos(youtube, playlist_id, videos):
                     {
                         "title" : video_title,
                         "episode_number" : episode_number,
+                        "video_id" : video_id,
                         "url" : youtube_link
                     }
             )
@@ -55,20 +56,27 @@ def search_videos(youtube, playlist_id, videos):
             return videos
 
 
-def main():
-    videos = []
-    playlist_id = "PL5UEpsh7xfCIMBsh7viJcd3HBjEqJt-Do"
+def get_videos(playlist_id):
+        videos = []
 
-    youtube = get_youtube_service()
-    videos = search_videos(youtube, playlist_id, videos)
+        youtube = get_youtube_service()
+        videos = search_videos_from_playlist(youtube, playlist_id, videos)
+
+        sort_videos(videos)
+
+        for video in videos:
+            print(f"Title: {video['title']}\Episode Number: {video['episode_number']}\nLink: {video['url']}")
+            print()
+
+        print(f"Videos Retrieved: {len(videos)}")
+
+        return videos
+
+
+
+
+def sort_videos(videos):
     videos.sort(key=lambda vid:vid["episode_number"])
 
-    for video in videos:
-        print(f"Title: {video['title']}\Episode Number: {video['episode_number']}\nLink: {video['url']}")
-        print()
 
-
-    print(len(videos))
-
-if __name__ == "__main__":
-   main() 
+playlist_id = "PL5UEpsh7xfCIMBsh7viJcd3HBjEqJt-Do"
