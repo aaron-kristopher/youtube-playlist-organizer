@@ -38,19 +38,19 @@ def search_videos_from_playlist(playlist_id):
 
         for item in video_response["items"]:
             video_title = item["snippet"]["title"]
-
-            video_id = item["id"]
             episode_number = utils.get_episode_number(video_title)
+            video_id = item["id"]
             youtube_link = f"https://youtu.be/{video_id}"
 
-            videos.append(
-                    {
-                        "title" : video_title,
-                        "episode_number" : episode_number,
-                        "video_id" : video_id,
-                        "url" : youtube_link
-                    }
-            )
+            if episode_number is not None:
+                videos.append(
+                            {
+                            "title" : video_title,
+                            "episode_number" : episode_number,
+                            "video_id" : video_id,
+                            "url" : youtube_link
+                        }
+                )
 
         nextPageToken = playlist_response.get("nextPageToken")
 
@@ -67,7 +67,6 @@ def get_sorted_videos(playlist_id):
             print(f"Title: {video['title']}\nEpisode Number: {video['episode_number']}\nLink: {video['url']}")
             print()
 
-        print(videos)
         print(f"Videos Retrieved: {len(videos)}")
 
         return videos
@@ -76,12 +75,10 @@ def get_sorted_videos(playlist_id):
 
 
 def sort_videos(videos):
-
-    print(videos)
     videos.sort(key=lambda vid:vid["episode_number"])
 
 
 
 if __name__ == "__main__":
     playlist_id = "PL5UEpsh7xfCIMBsh7viJcd3HBjEqJt-Do"
-    print(get_sorted_videos(playlist_id))
+    get_sorted_videos(playlist_id)
