@@ -1,5 +1,5 @@
 import os
-import utils
+from src import utils
 from googleapiclient.discovery import build
 
 def get_youtube_service():
@@ -8,7 +8,9 @@ def get_youtube_service():
     return youtube
 
 
-def search_videos_from_playlist(youtube, playlist_id, videos):
+def search_videos_from_playlist(playlist_id):
+    youtube = get_youtube_service()
+    videos = []
 
     nextPageToken = None
 
@@ -56,18 +58,16 @@ def search_videos_from_playlist(youtube, playlist_id, videos):
             return videos
 
 
-def get_videos(playlist_id):
-        videos = []
-
-        youtube = get_youtube_service()
-        videos = search_videos_from_playlist(youtube, playlist_id, videos)
+def get_sorted_videos(playlist_id):
+        videos = search_videos_from_playlist(playlist_id)
 
         sort_videos(videos)
 
         for video in videos:
-            print(f"Title: {video['title']}\Episode Number: {video['episode_number']}\nLink: {video['url']}")
+            print(f"Title: {video['title']}\nEpisode Number: {video['episode_number']}\nLink: {video['url']}")
             print()
 
+        print(videos)
         print(f"Videos Retrieved: {len(videos)}")
 
         return videos
@@ -76,7 +76,12 @@ def get_videos(playlist_id):
 
 
 def sort_videos(videos):
+
+    print(videos)
     videos.sort(key=lambda vid:vid["episode_number"])
 
 
-playlist_id = "PL5UEpsh7xfCIMBsh7viJcd3HBjEqJt-Do"
+
+if __name__ == "__main__":
+    playlist_id = "PL5UEpsh7xfCIMBsh7viJcd3HBjEqJt-Do"
+    print(get_sorted_videos(playlist_id))
