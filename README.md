@@ -39,6 +39,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#to-fix">To Fix</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -121,6 +122,16 @@ creates a new playlist with the videos sorted.
 -   [x] Video Filtering for None Episodic Videos
 -   [ ] Custom Playlist Creation
 -   [ ] New Features...
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- TO FIX -->
+
+## To Fix
+
+-   [ ] Remove Duplicate Episodes
+-   [ ] Track Last Episode Before Quota
+-   [ ] Continue From Last Episode
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
