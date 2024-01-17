@@ -1,7 +1,8 @@
 import unittest
-from src.utils import get_episode_number  
+from src.utils import get_episode_number, remove_non_episode_video
 
 class TestEpisodeNumberExtraction(unittest.TestCase):
+
 
     def test_standard_episode_titles(self):
         titles = [
@@ -31,6 +32,29 @@ class TestEpisodeNumberExtraction(unittest.TestCase):
         for title in titles:
             with self.subTest(title=title):
                 self.assertIsNone(get_episode_number(title))
+
+
+    def test_videos_without_episode_number(self):
+
+        videos = [
+            {'title': 'Full Episode', 'episode_number': None, 'video_id': 'VIDEO_ID_5', 'url': 'URL_5'},
+            {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
+            {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
+            {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
+            {'title': 'Full Episode', 'episode_number': None, 'video_id': 'VIDEO_ID_2', 'url': 'URL_4'},
+        ]
+
+        expected_videos = [
+            {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
+            {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
+            {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
+        ]
+
+        episode_videos = remove_non_episode_video(videos)
+
+        # Assert that videos with no episode number are removed
+        self.assertEqual(episode_videos, expected_videos)
+
 
 if __name__ == "__main__":
     unittest.main()
