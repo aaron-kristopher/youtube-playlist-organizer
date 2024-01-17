@@ -166,4 +166,4 @@ Project Link: [https://github.com/aaron-kristopher/youtube-playlist-creator](htt
 [license-shield]: https://img.shields.io/github/license/aaron-kristopher/youtube-playlist-creator.svg?style=for-the-badge
 [license-url]: https://github.com/aaron-kristopher/youtube-playlist-creator/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/aaron-kristopher
+[linkedin-url]: https://linkedin.com/in/aaron-lim-88a478259/
