@@ -7,9 +7,7 @@ def get_youtube_service():
     youtube = build("youtube", "v3", developerKey=SECRET_API_KEY)
     return youtube
 
-
-def search_videos_from_playlist(playlist_id):
-    youtube = get_youtube_service()
+def get_videos_from_playlist(youtube, playlist_id):
     videos = []
 
     nextPageToken = None
@@ -29,7 +27,7 @@ def search_videos_from_playlist(playlist_id):
             video_ids.append(item["contentDetails"]["videoId"])
 
         video_request = youtube.videos().list(
-            part = "statistics,snippet",
+            part = "snippet",
             id = ",".join(video_ids)
         )
 
@@ -40,12 +38,14 @@ def search_videos_from_playlist(playlist_id):
             video_title = item["snippet"]["title"]
             episode_number = utils.get_episode_number(video_title)
             video_id = item["id"]
+            position = item["snippet"]["position"]
             youtube_link = f"https://youtu.be/{video_id}"
 
             videos.append(
                         {
                         "title" : video_title,
                         "episode_number" : episode_number,
+                        "position" : position,
                         "video_id" : video_id,
                         "url" : youtube_link
                     }
@@ -57,6 +57,20 @@ def search_videos_from_playlist(playlist_id):
             return videos
 
 
+def get_playlist_length(youtube, playlist_id):
+    playlist_response = youtube.playlists().list(
+            part="contentDetails",
+            id=playlist_id
+            ).execute()
+
+    playlist_length = playlist_response["items"][0]["contentDetails"]["itemCount"]
+
+    print(f"Number of videos in playlist {playlist_length}")
+
+    return playlist_length
+
+
 if __name__ == "__main__":
     playlist_id = "PL5UEpsh7xfCIMBsh7viJcd3HBjEqJt-Do"
-    search_videos_from_playlist(playlist_id)
+    
+    youtube = get_youtube_service()
