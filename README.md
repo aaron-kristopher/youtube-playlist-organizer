@@ -116,9 +116,11 @@ creates a new playlist with the videos sorted.
 
 ## Roadmap
 
--   [ ] Automatic Episode Retrieval
--   [ ] Chronological Ordering
+-   [x] Automatic Episode Retrieval
+-   [x] Chronological Ordering
+-   [x] Video Filtering for None Episodic Videos
 -   [ ] Custom Playlist Creation
+-   [ ] New Features...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
