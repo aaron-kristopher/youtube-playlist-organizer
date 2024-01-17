@@ -1,6 +1,4 @@
 import re
-from src.api_client.py import search_videos_from_playlist
-
 
 regex = r"(?i)(?:episode|ep)\s*(?P<episode_number>\d{1,4})(?:\s+of\s+\d+\s*)?.*"
 
@@ -23,16 +21,18 @@ def remove_non_episode_video(videos):
 
 
 
-def get_sorted_videos(playlist_id):
-        videos = search_videos_from_playlist(playlist_id)
-
-        sort_videos(videos)
+def get_sorted_videos(videos):
+        sort_videos(remove_non_episode_video(videos))
 
         for video in videos:
-            print(f"Title: {video['title']}\nEpisode Number: {video['episode_number']}\nLink: {video['url']}")
-            print()
+            print(f"""
+                  Title: {video["title"]}
+                  Episode Number: {video["episode_number"]}
+                  Video ID: {video["video_id"]}
+                  URL : {video["url"]}
 
-        print(f"Videos Retrieved: {len(videos)}")
+                  """)
+            print(f"Videos Retrieved: {len(videos)}")
 
         return videos
 
