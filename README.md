@@ -62,26 +62,25 @@ autoplay shuffle and watch their favorite series in chronological order.
 
 ## Getting Started
 
-Before diving into the world of automated TV series playlist, let's ensure you 
+Before diving into the world of automated TV series playlist, let's ensure you
 have the necessary tools.
 
 ### Prerequisites
 
-- **Python 3:** This project is built using [Python 3](https://www.python.org/downloads/)
-- **Python Virtual Environment:** Using a virtual environment keeps your script's
-dependencies isolated and avoids conflicts with other system libraris. Watch this 
-video for setting it up in [Windows](https://www.youtube.com/watch?v=APOPm01BVrk&ab_channel=CoreySchafer), and this for [Mac and Linux](https://www.youtube.com/watch?v=Kg1Yvry_Ydk&ab_channel=CoreySchafer)
-- **Required Libraries:** Install the Python libraries listed in the `requirements.txt`
-file. This inclued the Google API Client Library for Python, essential for interacting
-with the YouTube Data API.
-- **YouTube Data API Key:** You'll need a free YouTube Data API v3 key to 
-authenticate your script and access video information.
-    - Once you have your own API Key, don't forget to set it in your environment variables.
+-   **Python 3:** This project is built using [Python 3](https://www.python.org/downloads/)
+-   **Python Virtual Environment:** Using a virtual environment keeps your script's
+    dependencies isolated and avoids conflicts with other system libraris. Watch this
+    video for setting it up in [Windows](https://www.youtube.com/watch?v=APOPm01BVrk&ab_channel=CoreySchafer), and this for [Mac and Linux](https://www.youtube.com/watch?v=Kg1Yvry_Ydk&ab_channel=CoreySchafer)
+-   **Required Libraries:** Install the Python libraries listed in the `requirements.txt`
+    file. This inclued the Google API Client Library for Python, essential for interacting
+    with the YouTube Data API.
+-   **YouTube Data API Key:** You'll need a free YouTube Data API v3 key to
+    authenticate your script and access video information. - Once you have your own API Key, don't forget to set it in your environment variables.
     You can put it in your `~/.bash_profile` or `~/.profile` on Mac and Linux.
 
-    ```bash 
-    export SECRET_API_KEY="YOUR_SECRET_API_KEY"
-    ```
+        ```bash
+        export SECRET_API_KEY="YOUR_SECRET_API_KEY"
+        ```
 
 ### Installation
 
@@ -106,10 +105,10 @@ authenticate your script and access video information.
 ## Usage
 
 Currently, the program sorts an existing playlist in ascending order. This assumes
-that the playlist you provide it is public and has episode numbers. The program 
+that the playlist you provide it is public and has episode numbers. The program
 creates a new playlist with the videos sorted.
 
->NOTE: The program is still in development and is not yet finished
+> NOTE: The program is still in development and is not yet finished
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,11 +138,11 @@ creates a new playlist with the videos sorted.
 
 ## Contributing
 
-This project is still under development. Contributions are what make the open 
-source community such an amazing place to learn, inspire, and create. Any 
+This project is still under development. Contributions are what make the open
+source community such an amazing place to learn, inspire, and create. Any
 contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and 
+If you have a suggestion that would make this better, please fork the repo and
 create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
