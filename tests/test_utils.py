@@ -34,7 +34,7 @@ class TestEpisodeNumberExtraction(unittest.TestCase):
                 self.assertIsNone(get_episode_number(title))
 
 
-    def test_videos_without_episode_number(self):
+    def test_remove_non_episode_video(self):
 
         videos = [
             {'title': 'Full Episode', 'episode_number': None, 'video_id': 'VIDEO_ID_5', 'url': 'URL_5'},
@@ -58,44 +58,34 @@ class TestEpisodeNumberExtraction(unittest.TestCase):
 
     def test_sort_videos(self):
 
-        videos = [
+        # INPUTS
+        with_numbered_videos = [
             {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
             {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
             {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
         ]
 
+        with_non_numbered_videos = [
+                {'title': 'Full Episode', 'episode_number': None, 'video_id': 'VIDEO_ID_5', 'url': 'URL_5'},
+                {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
+                {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
+                {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
+                {'title': 'Full Episode', 'episode_number': None, 'video_id': 'VIDEO_ID_2', 'url': 'URL_4'},
+        ]
+
+        # OUTPUT
         expected_videos = [
             {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
             {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
             {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
         ]
 
-        sorted_videos = get_sorted_videos(videos)
 
         # Assert that videos are sorted by episode number
-        self.assertEqual(sorted_videos, expected_videos)
+        self.assertEqual(get_sorted_videos(with_numbered_videos), expected_videos)
+        self.assertEqual(get_sorted_videos(with_non_numbered_videos), expected_videos)
 
 
-    def test_sort_videos_with_non_episode_videos(self):
-
-        videos = [
-            {'title': 'Full Episode', 'episode_number': None, 'video_id': 'VIDEO_ID_5', 'url': 'URL_5'},
-            {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
-            {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
-            {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
-            {'title': 'Full Episode', 'episode_number': None, 'video_id': 'VIDEO_ID_2', 'url': 'URL_4'},
-        ]
-
-        expected_videos = [
-            {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
-            {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
-            {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
-        ]
-
-        sorted_videos = get_sorted_videos(videos)
-
-        # Assert that videos are sorted by episode number
-        self.assertEqual(sorted_videos, expected_videos)
 if __name__ == "__main__":
     unittest.main()
 
