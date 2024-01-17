@@ -1,5 +1,6 @@
 import unittest
-from src.utils import get_episode_number, remove_non_episode_video, get_sorted_videos
+from src.utils import get_episode_number, remove_non_episode_video
+from src.utils import get_sorted_videos, remove_duplicate_videos
 
 class TestEpisodeNumberExtraction(unittest.TestCase):
 
@@ -84,6 +85,26 @@ class TestEpisodeNumberExtraction(unittest.TestCase):
         # Assert that videos are sorted by episode number
         self.assertEqual(get_sorted_videos(with_numbered_videos), expected_videos)
         self.assertEqual(get_sorted_videos(with_non_numbered_videos), expected_videos)
+
+    
+    def test_removing_duplicate_videos(self):
+        repetead_videos = [
+                {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
+                {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
+                {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
+                {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
+                {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
+        ]
+
+        expected_videos = [
+                {'title': 'Full Episode 3', 'episode_number': 3, 'video_id': 'VIDEO_ID_3', 'url': 'URL_3'},
+                {'title': 'Full Episode 1', 'episode_number': 1, 'video_id': 'VIDEO_ID_1', 'url': 'URL_1'},
+                {'title': 'Full Episode 2', 'episode_number': 2, 'video_id': 'VIDEO_ID_2', 'url': 'URL_2'},
+        ]
+
+        self.assertEqual(remove_duplicate_videos(repetead_videos), expected_videos)
+
+
 
 
 if __name__ == "__main__":

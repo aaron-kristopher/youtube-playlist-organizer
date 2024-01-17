@@ -52,6 +52,26 @@ def get_video_id_from_csv(videos_csv):
         print("Error: Column video id not found in the CSV file.")
         return None
 
+def get_videos_from_csv(videos_csv):
+    with open(videos_csv) as f:
+        reader = csv.DictReader(f)
+
+        videos = list(reader)
+
+    return videos
+
+def remove_duplicate_videos(videos):
+    seen = set()
+    new_videos = []
+
+    for video in videos:
+        item = tuple(video.items())
+        if item not in seen:
+            seen.add(item)
+            new_videos.append(video)
+
+    return new_videos
+
 def save_to_csv(videos):
     field_names = list(videos[0].keys())
 
@@ -60,7 +80,34 @@ def save_to_csv(videos):
         writer.writeheader() 
         writer.writerows(videos)
 
+def check_missing_videos(videos):
+    missing_episodes = []
+
+    count = 0   
+    episode = 0
+    expected_episode_number = 1
+
+    while (count < len(videos)):
+        count += 1
+
+        episode_number = int(videos[episode]["episode_number"])
+
+        if episode_number != expected_episode_number:
+            print(f"episode: {episode_number}\texpected: {expected_episode_number}")
+            missing_episodes.append(expected_episode_number)
+            expected_episode_number += 1
+        else:
+            episode += 1
+            expected_episode_number += 1
+
+    return missing_episodes
+
 
 if __name__ == "__main__":
-    video_id = get_video_id_from_csv("./videos.csv")
-    print(video_id)
+    #video_id = get_video_id_from_csv("./videos.csv")
+    videos = get_videos_from_csv("./videos.csv")
+    missing_episodes = check_missing_videos(videos)
+
+    print(f"Missing episodes: {missing_episodes}")
+
+
