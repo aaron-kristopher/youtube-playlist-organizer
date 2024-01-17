@@ -22,7 +22,6 @@ def remove_non_episode_video(videos):
     return videos
 
 
-
 def get_sorted_videos(videos):
         sort_videos(remove_non_episode_video(videos))
 
@@ -55,9 +54,7 @@ def get_video_id_from_csv(videos_csv):
 def get_videos_from_csv(videos_csv):
     with open(videos_csv) as f:
         reader = csv.DictReader(f)
-
         videos = list(reader)
-
     return videos
 
 def remove_duplicate_videos(videos):
@@ -69,7 +66,6 @@ def remove_duplicate_videos(videos):
         if item not in seen:
             seen.add(item)
             new_videos.append(video)
-
     return new_videos
 
 def save_to_csv(videos):
@@ -89,7 +85,6 @@ def check_missing_videos(videos):
 
     while (count < len(videos)):
         count += 1
-
         episode_number = int(videos[episode]["episode_number"])
 
         if episode_number != expected_episode_number:
@@ -99,7 +94,6 @@ def check_missing_videos(videos):
         else:
             episode += 1
             expected_episode_number += 1
-
     return missing_episodes
 
 
