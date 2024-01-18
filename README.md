@@ -8,18 +8,18 @@
 <!-- PROJECT LOGO -->
 <br />
 
-<h1 align="center">Youtube Playlist Creator</h1>
+<h1 align="center">Youtube Playlist Organizer</h1>
 
   <p align="center">
   This is a small python script that creates a youtube playlist.
     <br />
-    <a href="https://github.com/aaron-kristopher/youtube-playlist-creator"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/aaron-kristopher/youtube-playlist-organizer"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     ·
-    <a href="https://github.com/aaron-kristopher/youtube-playlist-creator/issues">Report Bug</a>
+    <a href="https://github.com/aaron-kristopher/youtube-playlist-organizer/issues">Report Bug</a>
     ·
-    <a href="https://github.com/aaron-kristopher/youtube-playlist-creator/issues">Request Feature</a>
+    <a href="https://github.com/aaron-kristopher/youtube-playlist-organizer/issues">Request Feature</a>
   </p>
 </div>
 
@@ -50,7 +50,7 @@
 
 ## About The Project
 
-**YouTube Playlist Creator for TV Series**
+**YouTube Playlist Organizer for TV Series**
 
 This project helps you easily create and manage playlists for TV series on YouTube.
 It's designed to be a user-friendly tool for anyone who wants to ditch the frustrating
@@ -87,7 +87,7 @@ have the necessary tools.
 1. Get a free API Key at [Google Cloud API Library](https://console.cloud.google.com/apis/library?project=kinetic-axle-411403)
 2. Clone the repo
     ```sh
-    git clone https://github.com/aaron-kristopher/youtube-playlist-creator.git
+    git clone https://github.com/aaron-kristopher/youtube-playlist-organizer.git
     ```
 3. Install pip packages
     ```sh
@@ -168,14 +168,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Aaron Lim - aaron.lim.cstr@gmail.com
 
-Project Link: [https://github.com/aaron-kristopher/youtube-playlist-creator](https://github.com/aaron-kristopher/youtube-playlist-creator)
+Project Link: [https://github.com/aaron-kristopher/youtube-playlist-organizer](https://github.com/aaron-kristopher/youtube-playlist-organizer)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[license-shield]: https://img.shields.io/github/license/aaron-kristopher/youtube-playlist-creator.svg?style=for-the-badge
-[license-url]: https://github.com/aaron-kristopher/youtube-playlist-creator/blob/main/LICENSE
+[license-shield]: https://img.shields.io/github/license/aaron-kristopher/youtube-playlist-organizer.svg?style=for-the-badge
+[license-url]: https://github.com/aaron-kristopher/youtube-playlist-organizer/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/aaron-lim-88a478259/
