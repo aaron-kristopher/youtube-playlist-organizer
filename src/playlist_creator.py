@@ -1,19 +1,27 @@
-from googleapiclient.discovery import build
 from src import utils, api_client
-import google_auth_oauthlib.flow
+
+
+def create_playlist():
+    youtube = api_client.get_youtube_oauth_service()
+    request = youtube.playlists().insert(
+        part="string.title,status.privacyStatus",
+        body={
+          "snippet": {
+            "title": "Be careful With My Heart Episodes",
+            "description": "A playlist of all available episodes for the TV series 'Be Careful With My Heart' as the original playlist is not ordered correctly."
+          },
+          "status": {
+            "privacyStatus": "public"
+          }
+        }
+    )
+    response = request.execute()
+
+    print(response)
+
 
 def add_videos_to_playlist(video_ids, playlist_id):
-    CLIENT_SECRET_FILE = "client_secrets.json"
-    API_NAME = "youtube"
-    API_VERSION = "v3"
-    SCOPES = ["https://www.googleapis.com/auth/youtube"]
-
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-            CLIENT_SECRET_FILE, SCOPES)
-
-    credentials = flow.run_local_server(port=0)
-    youtube = build(API_NAME, API_VERSION, credentials=credentials)
-
+    youtube = api_client.get_youtube_oauth_service()
     video_ids = utils.get_video_id_from_csv("./videos.csv")
 
     for video_id in video_ids:
@@ -28,14 +36,13 @@ def add_videos_to_playlist(video_ids, playlist_id):
                 }
             }
         }
-
         youtube.playlistItems().insert(
                 part="snippet",
                 body=request_body
         ).execute()
 
 if __name__ == "__main__":
-
+    """
     # Gets all videos
     playlist_id_source = "PLwPOcpjobYWWnlK82-RgfCDIv1vcL4KPc" # Be Careful Playlist
     playlist_id_target = "PLDInhITVKdPrRFUnygaeONDJvq_clRSip" # Custom Playlist
@@ -49,4 +56,6 @@ if __name__ == "__main__":
 
     # Adds to playlist
     add_videos_to_playlist(video_ids, playlist_id_target)
-    
+    """  
+
+    create_playlist()
