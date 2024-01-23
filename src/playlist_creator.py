@@ -24,22 +24,25 @@ def add_videos_to_playlist(video_ids, playlist_id):
     youtube = api_client.get_youtube_oauth_service()
     video_ids = utils.get_video_id_from_csv("./videos.csv")
 
-    for video_id in video_ids:
-        print(video_id)
-        print()
-        request_body = {
-                "snippet" : {
-                    "playlistId" : playlist_id,
-                    "resourceId" : {
-                        "kind" : "youtube#video",
-                        "videoId" : video_id,
+    if video_ids is not None:
+        for video_id in video_ids:
+            print(video_id)
+            print()
+            request_body = {
+                    "snippet" : {
+                        "playlistId" : playlist_id,
+                        "resourceId" : {
+                            "kind" : "youtube#video",
+                            "videoId" : video_id,
+                    }
                 }
             }
-        }
-        youtube.playlistItems().insert(
-                part="snippet",
-                body=request_body
-        ).execute()
+            youtube.playlistItems().insert(
+                    part="snippet",
+                    body=request_body
+            ).execute()
+    else: 
+        print("Empty Videos")
 
 if __name__ == "__main__":
     """
