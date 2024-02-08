@@ -8,7 +8,8 @@ def get_episode_number(title):
     if match:
         return int(match.group("episode_number"))
     else:
-        return None  
+        return None
+
 
 def get_sorted_videos(videos):
     sort_videos(remove_non_episode_video(videos))
@@ -16,9 +17,10 @@ def get_sorted_videos(videos):
 
     return videos
 
+
 def get_video_id_from_csv(videos_csv):
     try:
-        with open(videos_csv, 'r') as csvfile:
+        with open(videos_csv, "r") as csvfile:
             reader = csv.reader(csvfile)
             header = next(reader)  # Skip the header row
             column_index = header.index("video_id")
@@ -33,24 +35,27 @@ def get_video_id_from_csv(videos_csv):
         print("Error: Column video id not found in the CSV file.")
         return None
 
+
 def get_videos_from_csv(videos_csv):
     with open(videos_csv) as csvfile:
         reader = csv.DictReader(csvfile)
         videos = list(reader)
     return videos
 
+
 def get_remaining_videos(videos_csv, last_video):
     last_video = offset_missing_episodes(last_video)
 
     with open(videos_csv) as csvfile:
         reader = csv.reader(csvfile)
-        rows = list(reader)  
-        headers = rows[0]  
-        data = rows[last_video:]  
-        videos = [dict(zip(headers, row)) for row in data[1:]]  
+        rows = list(reader)
+        headers = rows[0]
+        data = rows[last_video:]
+        videos = [dict(zip(headers, row)) for row in data[1:]]
 
     print(videos[0]["episode_number"])
     return videos
+
 
 def remove_non_episode_video(videos):
     for index, video in enumerate(videos):
@@ -58,6 +63,7 @@ def remove_non_episode_video(videos):
             videos.pop(index)
 
     return videos
+
 
 def remove_duplicate_videos(videos):
     seen = set()
@@ -70,24 +76,27 @@ def remove_duplicate_videos(videos):
             new_videos.append(video)
     return new_videos
 
+
 def sort_videos(videos):
-    videos.sort(key=lambda vid:vid["episode_number"])
+    videos.sort(key=lambda vid: vid["episode_number"])
+
 
 def save_to_csv(videos):
     field_names = list(videos[0].keys())
 
-    with open('videos.csv', 'w') as csvfile: 
-        writer = csv.DictWriter(csvfile, fieldnames = field_names) 
-        writer.writeheader() 
+    with open("videos.csv", "w") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=field_names)
+        writer.writeheader()
         writer.writerows(videos)
+
 
 def check_missing_videos(videos):
     missing_episodes = []
-    count = 0   
+    count = 0
     episode = 0
     expected_episode_number = 1
 
-    while (count < len(videos)):
+    while count < len(videos):
         count += 1
         episode_number = int(videos[episode]["episode_number"])
 
@@ -100,12 +109,13 @@ def check_missing_videos(videos):
 
     return missing_episodes
 
+
 def offset_missing_episodes(last_video):
     missing_episodes = [136, 305, 306, 307, 308, 449]
-    
+
     for index, episode in enumerate(missing_episodes):
         if last_video < episode:
-            return last_video - (index +  1)
+            return last_video - (index + 1)
 
     return last_video
 
@@ -116,4 +126,3 @@ if __name__ == "__main__":
 
     vidoes = get_remaining_videos("./videos.csv", 350)
     print(f"Missing episodes: {missing_episodes}")
-
