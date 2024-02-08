@@ -69,10 +69,10 @@ have the necessary tools.
 
 -   **Python 3:** This project is built using [Python 3](https://www.python.org/downloads/)
 -   **Python Virtual Environment:** Using a virtual environment keeps your script's
-    dependencies isolated and avoids conflicts with other system libraris. Watch this
+    dependencies isolated and avoids conflicts with other system libraries. Watch this
     video for setting it up in [Windows](https://www.youtube.com/watch?v=APOPm01BVrk&ab_channel=CoreySchafer), and this for [Mac and Linux](https://www.youtube.com/watch?v=Kg1Yvry_Ydk&ab_channel=CoreySchafer)
 -   **Required Libraries:** Install the Python libraries listed in the `requirements.txt`
-    file. This inclued the Google API Client Library for Python, essential for interacting
+    file. This include the Google API Client Library for Python, essential for interacting
     with the YouTube Data API.
 -   **YouTube Data API Key:** You'll need a free YouTube Data API v3 key to
     authenticate your script and access video information. - Once you have your own API Key, don't forget to set it in your environment variables.
@@ -113,13 +113,13 @@ creates a new playlist with the videos sorted.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
-
+inclued
 ## Roadmap
 
 -   [x] Automatic Episode Retrieval
 -   [x] Chronological Ordering
 -   [x] Video Filtering for None Episodic Videos
--   [ ] Custom Playlist Creation
+-   [x] Custom Playlist Creation
 -   [ ] New Features...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
