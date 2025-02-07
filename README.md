@@ -78,9 +78,9 @@ have the necessary tools.
     authenticate your script and access video information. - Once you have your own API Key, don't forget to set it in your environment variables.
     You can put it in your `~/.bash_profile` or `~/.profile` on Mac and Linux.
 
-        ```bash
-        export SECRET_API_KEY="YOUR_SECRET_API_KEY"
-        ```
+  ```sh
+  export SECRET_API_KEY="YOUR_SECRET_API_KEY"
+  ```
 
 ### Installation
 
